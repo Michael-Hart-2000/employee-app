@@ -5,7 +5,13 @@ import kotlin.math.round
 fun main(args: Array<String>) {
     println("Pay Slip Printer")
     println(getFullName())
-    payslip()
+    println(getPayslip())
+    println("Monthly Salary: ${getMonthlySalary()}")
+    println("Monthly PRSI: ${getMonthlyPRSI()}")
+    println("Monthly PAYE: ${getMonthlyPAYE()}")
+    println("Monthly Gross Pay: ${getGrossMonthlyPay()}")
+    println("Monthly Total Deductions: ${getTotalMonthlyDeductions()}")
+    println("Monthly Net Pay: ${getNetMonthlyPay()}")
 
 }
 
@@ -34,8 +40,7 @@ val prsiPercentage = 5.2
 val annualBonusAmountOf = 1450.50
 val cycleToWorkSchemeMonthlyDeduction = 54.33
 
-fun payslip() {
-    println (
+fun getPayslip() =
         """            ----------------------------------------------------------
             |                     Monthly Payslip                    |
             |--------------------------------------------------------|
@@ -53,6 +58,5 @@ fun payslip() {
             |--------------------------------------------------------|
             |                     NET PAY:${getNetMonthlyPay()}                    |
             ----------------------------------------------------------"""
-    )
-}
+
 
