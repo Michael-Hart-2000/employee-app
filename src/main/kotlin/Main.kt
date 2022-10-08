@@ -38,44 +38,36 @@ fun menu() : Int {
     return readLine()!!.toInt()
 }
 
-fun getFullName() = when (gender){
-    "m", "M" -> "Mr. $firstName $secondName"
-    "f", "F" -> "Ms. $firstName $secondName"
-    else -> "$firstName $secondName"
+fun getFullName() = when (employee.gender){
+    'm', 'M' -> "Mr. ${employee.firstName} ${employee.secondName}"
+    'f', 'F'-> "Ms.  ${employee.firstName} ${employee.secondName}"
+    else ->  "${employee.firstName} ${employee.secondName}"
 }
 
-fun getMonthlySalary() = roundTwoDecimals(grossSalary / 12)
-fun getMonthlyPRSI() = roundTwoDecimals(getMonthlySalary() * (prsiPercentage / 100))
-fun getMonthlyPAYE() = roundTwoDecimals(getMonthlySalary() * (payePercentage / 100))
-fun getGrossMonthlyPay() = roundTwoDecimals(getMonthlySalary() + (annualBonusAmountOf / 12))
-fun getTotalMonthlyDeductions() = roundTwoDecimals((getMonthlyPRSI() + getMonthlyPAYE() + cycleToWorkSchemeMonthlyDeduction))
+fun getMonthlySalary() = roundTwoDecimals(employee.grossSalary / 12)
+fun getMonthlyPRSI() = roundTwoDecimals(getMonthlySalary() * (employee.prsiPercentage / 100))
+fun getMonthlyPAYE() = roundTwoDecimals(getMonthlySalary() * (employee.payePercentage / 100))
+fun getGrossMonthlyPay() = roundTwoDecimals(getMonthlySalary() + (employee.annualBonusAmountOf / 12))
+fun getTotalMonthlyDeductions() = roundTwoDecimals((getMonthlyPRSI() + getMonthlyPAYE() + employee.cycleToWorkSchemeMonthlyDeduction))
 fun getNetMonthlyPay() = roundTwoDecimals(roundTwoDecimals(getGrossMonthlyPay() - getTotalMonthlyDeductions()))
 
 fun roundTwoDecimals(number: Double) = round(number * 100) / 100
 
-val firstName = "Joe"
-val secondName = "Soap"
-val gender = "m"
-val employeeId = 6143
-val grossSalary = 67543.21
-val payePercentage = 38.5
-val prsiPercentage = 5.2
-val annualBonusAmountOf = 1450.50
-val cycleToWorkSchemeMonthlyDeduction = 54.33
+var employee =  Employee("Joe", "Soap", 'm', 6143, 67543.21, 38.5, 5.2, 1450.50, 54.33)
 
 fun getPayslip() =
         """            ----------------------------------------------------------
             |                     Monthly Payslip                    |
             |--------------------------------------------------------|
             |                                                        |
-            |  Employee Name: ${getFullName()}       Employee ID: $employeeId   |
+            |  Employee Name: ${getFullName()}       Employee ID: ${employee.employeeID}   |
             |                                                        |
             |--------------------------------------------------------|
             |  PAYMENT DETAILS           DEDUCTION DETAILS           |
             |--------------------------------------------------------|
             |  Salary: ${getMonthlySalary()}            PAYE: ${getMonthlyPAYE()}               |
-            |  Bonus:  ${roundTwoDecimals(annualBonusAmountOf/12)}            PRSI: ${getMonthlyPRSI()}                |
-            |                            Cylce To Work: ${roundTwoDecimals(cycleToWorkSchemeMonthlyDeduction)}        |
+            |  Bonus:  ${roundTwoDecimals(employee.annualBonusAmountOf/12)}            PRSI: ${getMonthlyPRSI()}                |
+            |                            Cylce To Work: ${roundTwoDecimals(employee.cycleToWorkSchemeMonthlyDeduction)}        |
             |--------------------------------------------------------|
             |  Gross: ${getGrossMonthlyPay()}            Total Deductions:${getTotalMonthlyDeductions()}    |
             |--------------------------------------------------------|
