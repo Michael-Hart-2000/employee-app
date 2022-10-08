@@ -20,22 +20,24 @@ val annualBonusAmountOf = 1450.50
 val cycleToWorkSchemeMonthlyDeduction = 54.33
 
 fun payslip() {
-    println ("---------------------------------------------------------- ")
-    println ("|                     Monthly Payslip                    |")
-    println ("|--------------------------------------------------------|")
-    println ("|                                                        |")
-    println ("|  Employee Name: ${firstName.uppercase()} ${secondName.uppercase()} ${gender.uppercase()} \t\t Employee ID: $employeeId   |")
-    println ("|                                                        |")
-    println ("|--------------------------------------------------------|")
-    println ("|  PAYMENT DETAILS \t\t\t DEDUCTION DETAILS           |")
-    println ("|--------------------------------------------------------|")
-    println ("|  Salary: ${roundTwoDecimals(grossSalary/12)}            PAYE: ${roundTwoDecimals(grossSalary/12*payePercentage/100)}               |")
-    println ("|  Bonus:  ${roundTwoDecimals(annualBonusAmountOf/12)}            PRSI: ${roundTwoDecimals(grossSalary/12*prsiPercentage/100)}                |")
-    println ("|                            Cylce To Work: ${roundTwoDecimals(cycleToWorkSchemeMonthlyDeduction)}        |")
-    println ("|--------------------------------------------------------|")
-    println ("|  Gross: ${roundTwoDecimals(grossSalary/12 + annualBonusAmountOf/12)}            Total Deductions:${roundTwoDecimals((grossSalary/12*payePercentage/100 + grossSalary/12*prsiPercentage/100 + cycleToWorkSchemeMonthlyDeduction))}    |")
-    println ("|--------------------------------------------------------|")
-    println ("|                     NET PAY:${roundTwoDecimals(grossSalary/12 + annualBonusAmountOf/12 - (grossSalary/12*payePercentage/100+grossSalary/12*prsiPercentage/100 + cycleToWorkSchemeMonthlyDeduction))}                    |")
-    println ("----------------------------------------------------------")
+    println (
+        """            ----------------------------------------------------------
+            |                     Monthly Payslip                    |
+            |--------------------------------------------------------|
+            |                                                        |
+            |  Employee Name: ${firstName.uppercase()} ${secondName.uppercase()} ${gender.uppercase()}       Employee ID: $employeeId     |
+            |                                                        |
+            |--------------------------------------------------------|
+            |  PAYMENT DETAILS           DEDUCTION DETAILS           |
+            |--------------------------------------------------------|
+            |  Salary: ${roundTwoDecimals(grossSalary/12)}            PAYE: ${roundTwoDecimals(grossSalary/12*payePercentage/100)}               |
+            |  Bonus:  ${roundTwoDecimals(annualBonusAmountOf/12)}            PRSI: ${roundTwoDecimals(grossSalary/12*prsiPercentage/100)}                |
+            |                            Cylce To Work: ${roundTwoDecimals(cycleToWorkSchemeMonthlyDeduction)}        |
+            |--------------------------------------------------------|
+            |  Gross: ${roundTwoDecimals(grossSalary/12 + annualBonusAmountOf/12)}            Total Deductions:${roundTwoDecimals((grossSalary/12*payePercentage/100 + grossSalary/12*prsiPercentage/100 + cycleToWorkSchemeMonthlyDeduction))}    |
+            |--------------------------------------------------------|
+            |                     NET PAY:${roundTwoDecimals(grossSalary/12 + annualBonusAmountOf/12 - (grossSalary/12*payePercentage/100+grossSalary/12*prsiPercentage/100 + cycleToWorkSchemeMonthlyDeduction))}                    |
+            ----------------------------------------------------------"""
+    )
 }
 
