@@ -15,6 +15,12 @@ fun getFullName() = when (gender){
     else -> "$firstName $secondName"
 }
 
+fun getMonthlySalary() = roundTwoDecimals(grossSalary / 12)
+fun getMonthlyPRSI() = roundTwoDecimals(getMonthlySalary() * (prsiPercentage / 100))
+fun getMonthlyPAYE() = roundTwoDecimals(getMonthlySalary() * (payePercentage / 100))
+fun getGrossMonthlyPay() = roundTwoDecimals(getMonthlySalary() + (annualBonusAmountOf / 12))
+fun getTotalMonthlyDeductions() = roundTwoDecimals((getMonthlyPRSI() + getMonthlyPAYE() + cycleToWorkSchemeMonthlyDeduction))
+fun getNetMonthlyPay() = roundTwoDecimals(roundTwoDecimals(getGrossMonthlyPay() - getTotalMonthlyDeductions()))
 
 fun roundTwoDecimals(number: Double) = round(number * 100) / 100
 
@@ -39,13 +45,13 @@ fun payslip() {
             |--------------------------------------------------------|
             |  PAYMENT DETAILS           DEDUCTION DETAILS           |
             |--------------------------------------------------------|
-            |  Salary: ${roundTwoDecimals(grossSalary/12)}            PAYE: ${roundTwoDecimals(grossSalary/12*payePercentage/100)}               |
-            |  Bonus:  ${roundTwoDecimals(annualBonusAmountOf/12)}            PRSI: ${roundTwoDecimals(grossSalary/12*prsiPercentage/100)}                |
+            |  Salary: ${getMonthlySalary()}            PAYE: ${getMonthlyPAYE()}               |
+            |  Bonus:  ${roundTwoDecimals(annualBonusAmountOf/12)}            PRSI: ${getMonthlyPRSI()}                |
             |                            Cylce To Work: ${roundTwoDecimals(cycleToWorkSchemeMonthlyDeduction)}        |
             |--------------------------------------------------------|
-            |  Gross: ${roundTwoDecimals(grossSalary/12 + annualBonusAmountOf/12)}            Total Deductions:${roundTwoDecimals((grossSalary/12*payePercentage/100 + grossSalary/12*prsiPercentage/100 + cycleToWorkSchemeMonthlyDeduction))}    |
+            |  Gross: ${getGrossMonthlyPay()}            Total Deductions:${getTotalMonthlyDeductions()}    |
             |--------------------------------------------------------|
-            |                     NET PAY:${roundTwoDecimals(grossSalary/12 + annualBonusAmountOf/12 - (grossSalary/12*payePercentage/100+grossSalary/12*prsiPercentage/100 + cycleToWorkSchemeMonthlyDeduction))}                    |
+            |                     NET PAY:${getNetMonthlyPay()}                    |
             ----------------------------------------------------------"""
     )
 }
