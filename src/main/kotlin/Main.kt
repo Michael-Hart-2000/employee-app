@@ -4,8 +4,17 @@ import kotlin.math.round
 
 fun main(args: Array<String>) {
     println("Pay Slip Printer")
+    println(getFullName())
     payslip()
+
 }
+
+fun getFullName() = when (gender){
+    "m", "M" -> "Mr. $firstName $secondName"
+    "f", "F" -> "Ms. $firstName $secondName"
+    else -> "$firstName $secondName"
+}
+
 
 fun roundTwoDecimals(number: Double) = round(number * 100) / 100
 
@@ -25,7 +34,7 @@ fun payslip() {
             |                     Monthly Payslip                    |
             |--------------------------------------------------------|
             |                                                        |
-            |  Employee Name: ${firstName.uppercase()} ${secondName.uppercase()} ${gender.uppercase()}       Employee ID: $employeeId     |
+            |  Employee Name: ${getFullName()}       Employee ID: $employeeId   |
             |                                                        |
             |--------------------------------------------------------|
             |  PAYMENT DETAILS           DEDUCTION DETAILS           |
