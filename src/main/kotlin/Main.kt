@@ -1,8 +1,15 @@
 package me.michael
 
+import mu.KotlinLogging
 import kotlin.math.round
 
+val logger = KotlinLogging.logger {}
+
 fun main(args: Array<String>){
+    logger.info { "Launching Employee App" }
+    logger.info { "Menu Below Details Instructions for App" }
+    logger.info { "Create, List, Search and Print Employees Payslips" }
+
     start()
 }
 
