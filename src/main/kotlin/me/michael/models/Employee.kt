@@ -1,4 +1,6 @@
-package me.michael
+package me.michael.me.michael.models
+
+import me.michael.roundTwoDecimals
 
 class Employee (
     var firstName: String,
